@@ -1,2 +1,2 @@
 # Link prototipo levantado
-thailu-production.up.railway.app 
+[https://thailu-production.up.railway.app](thailu-production.up.railway.app)
