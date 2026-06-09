@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/seguimiento.css}">
+    <title>Seguimiento | THAILU</title>
+</head>
+<body>
+<div class="page-container">
+    <header class="header-simple">
+        <div class="logo">
+            <img th:src="@{/assets/images/logo/logo.png}" alt="THAILU Balanzas Industriales">
+        </div>
+        <a th:href="@{/}" class="btn-regresar">Regresar</a>
+    </header>
+
+    <main>
+        <!-- Sin orden: mostrar formulario -->
+        <section class="status-page" th:if="${orden == null}">
+            <div class="status-card" style="text-align:center; padding:2rem;">
+                <h2 style="color:white; margin-bottom:1rem;">Consulta tu orden</h2>
+                <form th:action="@{/seguimiento/buscar}" method="post">
+                    <input type="text" name="codigo" placeholder="Ingresa tu código" required
+                           style="padding:0.7rem 1rem; border-radius:8px; border:none;
+                                  font-size:1rem; width:250px; margin-bottom:1rem;">
+                    <br>
+                    <button type="submit" class="btn-regresar">Buscar</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Con orden: mostrar estado -->
+        <section class="status-page" th:if="${orden != null}">
+            <div class="status-card">
+                <div class="status-header">
+                    <h2>Hora de Entrada:</h2>
+                    <span class="hora"
+                          th:text="${#temporals.format(orden.horaEntrada, 'hh:mm a')}">
+                        --:--
+                    </span>
+                </div>
+
+                <!-- Info adicional -->
+                <div style="color:#aaa; font-size:0.9rem; margin-bottom:1rem; text-align:center;">
+                    <p>Cliente: <span style="color:white;" th:text="${orden.nombreCliente}"></span></p>
+                    <p>Balanza: <span style="color:white;" th:text="${orden.modeloBalanza}"></span></p>
+                    <p>Código: <span style="color:#f5a623;" th:text="${orden.codigoSeguimiento}"></span></p>
+                </div>
+
+                <div class="status-steps">
+                    <!-- EN_ESPERA -->
+                    <div th:classappend="${orden.estado.name() == 'EN_ESPERA' or
+                                          orden.estado.name() == 'EN_MANTENIMIENTO' or
+                                          orden.estado.name() == 'LISTO_PARA_RECOGER'} ? 'active'"
+                         class="step">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <p>En Espera</p>
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                    </div>
+
+                    <!-- EN_MANTENIMIENTO -->
+                    <div th:classappend="${orden.estado.name() == 'EN_MANTENIMIENTO' or
+                                          orden.estado.name() == 'LISTO_PARA_RECOGER'} ? 'active'"
+                         class="step">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <p>En Mantenimiento</p>
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                    </div>
+
+                    <!-- LISTO_PARA_RECOGER -->
+                    <div th:classappend="${orden.estado.name() == 'LISTO_PARA_RECOGER'} ? 'active'"
+                         class="step">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <p>Listo para Recoger</p>
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>

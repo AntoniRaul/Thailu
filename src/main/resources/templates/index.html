@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <title>THAILU</title>
+</head>
+<body>
+<div class="page-container">
+    <header class="header">
+        <div class="logo">
+            <img th:src="@{/assets/images/logo/logo.png}" alt="THAILU Balanzas Industriales">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a class="active" th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/nosotros}">Nosotros</a></li>
+                <li><a th:href="@{/servicios}">Servicios</a></li>
+                <li><a th:href="@{/catalogo}">Catalogo</a></li>
+                <li><a th:href="@{/login}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>ENCUENTRAS LAS<br>MEJORES BALANZAS</h1>
+                    <p>Brindamos mantenimiento, reparación y seguimiento digital para balanzas electrónicas mediante códigos QR, atención transparente y soporte técnico confiable.</p>
+                    <div class="hero-buttons">
+                        <span>¿Quieres ver el estado de tu Balanza?</span>
+                        <div class="btn-group">
+                            <a href="#" class="btn-main"
+                               onclick="document.getElementById('modal-codigo').style.display='flex'; return false;">
+                                INGRESE AQUI
+                            </a>
+                            <a th:href="@{/seguimiento}" class="btn-arrow">➜</a>
+                        </div>
+                    </div>
+
+                    <!-- Error flash -->
+                    <div th:if="${error}" style="color:#ff6b6b; margin-top:0.5rem;" th:text="${error}"></div>
+
+                    <!-- Modal -->
+                    <div id="modal-codigo"
+                         style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.65); z-index:999;
+            justify-content:center; align-items:center;">
+                        <div style="background:#1e1e2e; padding:2rem 2.5rem; border-radius:14px;
+                min-width:320px; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+                            <h3 style="color:white; margin-bottom:1.2rem;">Ingresa tu código de seguimiento</h3>
+                            <form th:action="@{/seguimiento/buscar}" method="post">
+                                <input type="text" name="codigo" placeholder="Ej: THL-001" required
+                                       style="padding:0.7rem 1rem; width:100%; border-radius:8px;
+                          border:none; font-size:1rem; margin-bottom:1rem;
+                          box-sizing:border-box;">
+                                <button type="submit" class="btn-main" style="width:100%; cursor:pointer;">
+                                    Buscar
+                                </button>
+                            </form>
+                            <p style="color:#aaa; margin-top:1rem; cursor:pointer; font-size:0.9rem;"
+                               onclick="document.getElementById('modal-codigo').style.display='none'">
+                                ✕ Cerrar
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-images">
+                    <img th:src="@{/assets/images/home/balanza1.png}" class="balanza-1" alt="Balanza industrial de plataforma negra">
+                    <img th:src="@{/assets/images/home/balanza2.png}" class="balanza-2" alt="Balanza digital verde con ruedas">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 THAILU Balanzas Industriales. Todos los derechos reservados.</p>
+    </footer>
+</div>
+</body>
+</html>

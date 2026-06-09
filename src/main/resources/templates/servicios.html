@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/servicios.css}">
+    <title>Servicios | THAILU</title>
+</head>
+<body>
+<div class="page-container">
+    <header class="header">
+        <div class="logo">
+            <img th:src="@{/assets/images/logo/logo.png}" alt="THAILU Balanzas Industriales">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/nosotros}">Nosotros</a></li>
+                <li><a class="active" th:href="@{/servicios}">Servicios</a></li>
+                <li><a th:href="@{/catalogo}">Catalogo</a></li>
+                <li><a th:href="@{/login}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="services-hero">
+            <h1>SERVICIOS</h1>
+        </section>
+
+        <section class="services-content">
+            <div class="services-title">
+                <h2>Soluciones para los comerciantes y microcomerciantes</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="services-grid">
+                <article class="service-card">
+                    <img th:src="@{/assets/images/servicios/venta-balanzas.png}" alt="Venta de balanzas">
+                    <h3>Venta de balanzas</h3>
+                </article>
+
+                <article class="service-card">
+                    <img th:src="@{/assets/images/servicios/reparacion-balanzas.png}" alt="Reparación de balanzas">
+                    <h3>Reparación de balanzas</h3>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 THAILU Balanzas Industriales. Todos los derechos reservados.</p>
+    </footer>
+</div>
+</body>
+</html>

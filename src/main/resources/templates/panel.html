@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/panel.css}">
+    <title>Panel | THAILU</title>
+</head>
+<body>
+<div class="page-container">
+
+    <header class="header">
+        <div class="logo">
+            <img th:src="@{/assets/images/logo/logo.png}" alt="THAILU">
+        </div>
+        <div style="display:flex; align-items:center; gap:20px;">
+            <span style="color:white; font-weight:600;">Panel de Administración</span>
+            <a th:href="@{/logout}" class="btn-logout">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <main class="panel-main">
+
+        <!-- FORMULARIO NUEVA ORDEN -->
+        <section class="panel-section">
+            <h2 class="panel-title">Registrar nueva balanza</h2>
+            <form th:action="@{/panel/nueva-orden}" method="post" class="orden-form">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Nombre del cliente</label>
+                        <input type="text" name="nombreCliente" placeholder="Ej: Juan Pérez" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Teléfono</label>
+                        <input type="text" name="telefonoCliente" placeholder="Ej: 987654321" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Modelo de balanza</label>
+                        <input type="text" name="modeloBalanza" placeholder="Ej: Plataforma 500kg" required>
+                    </div>
+                    <div class="form-field form-field--btn">
+                        <button type="submit" class="btn-registrar">Registrar</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- LISTA DE ORDENES -->
+        <section class="panel-section">
+            <h2 class="panel-title">Balanzas activas</h2>
+
+            <div class="table-wrapper">
+                <table class="ordenes-table">
+                    <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Cliente</th>
+                        <th>Teléfono</th>
+                        <th>Modelo</th>
+                        <th>Hora Entrada</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${#lists.isEmpty(ordenes)}">
+                        <td colspan="7" style="text-align:center; color:#aaa; padding:2rem;">
+                            No hay balanzas registradas
+                        </td>
+                    </tr>
+                    <tr th:each="orden : ${ordenes}">
+                        <td>
+                            <span class="codigo-badge" th:text="${orden.codigoSeguimiento}"></span>
+                        </td>
+                        <td th:text="${orden.nombreCliente}"></td>
+                        <td th:text="${orden.telefonoCliente}"></td>
+                        <td th:text="${orden.modeloBalanza}"></td>
+                        <td th:text="${#temporals.format(orden.horaEntrada, 'dd/MM/yyyy HH:mm')}"></td>
+
+                        <!-- Cambiar estado -->
+                        <td>
+                            <form th:action="@{/panel/cambiar-estado}" method="post">
+                                <input type="hidden" name="id" th:value="${orden.id}">
+                                <select name="estado" class="estado-select"
+                                        th:classappend="${orden.estado.name()}"
+                                        onchange="this.form.submit()">
+                                    <option th:each="e : ${estados}"
+                                            th:value="${e}"
+                                            th:text="${e.name().replace('_',' ')}"
+                                            th:selected="${orden.estado == e}">
+                                    </option>
+                                </select>
+                            </form>
+                        </td>
+
+                        <!-- Eliminar -->
+                        <td>
+                            <button class="btn-entregar"
+                                    onclick="confirmarEntrega(this)"
+                                    th:data-id="${orden.id}"
+                                    th:data-codigo="${orden.codigoSeguimiento}">
+                                Balanza Entregada
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal confirmación -->
+    <div id="modal-confirmacion"
+         style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+                background:rgba(0,0,0,0.7); z-index:999;
+                justify-content:center; align-items:center;">
+        <div style="background:#1e1e2e; padding:2rem 2.5rem; border-radius:14px;
+                    min-width:320px; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+            <h3 style="color:white; margin-bottom:0.5rem;">¿Confirmar entrega?</h3>
+            <p id="modal-texto" style="color:#aaa; margin-bottom:1.5rem;"></p>
+            <div style="display:flex; gap:1rem; justify-content:center;">
+                <form id="form-eliminar" th:action="@{/panel/eliminar}" method="post">
+                    <input type="hidden" id="input-id" name="id">
+                    <button type="submit" class="btn-registrar">Sí, entregar</button>
+                </form>
+                <button class="btn-cancelar"
+                        onclick="document.getElementById('modal-confirmacion').style.display='none'">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 THAILU Balanzas Industriales. Todos los derechos reservados.</p>
+    </footer>
+</div>
+
+<script>
+    function confirmarEntrega(btn) {
+        const id = btn.getAttribute('data-id');
+        const codigo = btn.getAttribute('data-codigo');
+        document.getElementById('input-id').value = id;
+        document.getElementById('modal-texto').textContent =
+            'Se eliminará la balanza con código ' + codigo + '. Esta acción no se puede deshacer.';
+        document.getElementById('modal-confirmacion').style.display = 'flex';
+    }
+</script>
+</body>
+</html>

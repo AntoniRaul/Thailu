@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <title>Login | THAILU</title>
+</head>
+<body>
+<div class="page-container">
+    <header class="header">
+        <div class="logo">
+            <img th:src="@{/assets/images/logo/logo.png}" alt="THAILU Balanzas Industriales">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/nosotros}">Nosotros</a></li>
+                <li><a th:href="@{/servicios}">Servicios</a></li>
+                <li><a th:href="@{/catalogo}">Catalogo</a></li>
+                <li><a class="active" th:href="@{/login}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="login-page">
+            <div class="login-image">
+                <img th:src="@{/assets/images/login/balanza-login.png}" alt="Balanza industrial verde">
+            </div>
+            <div class="login-container">
+                <form class="login-card" th:action="@{/login}" method="post">
+                    <div class="user-icon">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="35" r="15"/>
+                            <path d="M20 82 C20 60 80 60 80 82"/>
+                            <circle cx="50" cy="50" r="32" fill="none"/>
+                        </svg>
+                    </div>
+
+                    <!-- Error -->
+                    <div th:if="${error}"
+                         style="color:#ff6b6b; text-align:center; margin-bottom:1rem; font-size:0.9rem;"
+                         th:text="${error}">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ingrese usuario</label>
+                        <input type="text" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" name="password" required>
+                    </div>
+                    <button type="submit">Ingresar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 THAILU Balanzas Industriales. Todos los derechos reservados.</p>
+    </footer>
+</div>
+</body>
+</html>

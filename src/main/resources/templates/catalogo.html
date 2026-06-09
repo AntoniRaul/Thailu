@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/catalogo.css}">
+    <title>Catálogo | THAILU</title>
+</head>
+<body>
+<div class="page-container">
+    <header class="header">
+        <div class="logo">
+            <img th:src="@{/assets/images/logo/logo.png}" alt="THAILU Balanzas Industriales">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/nosotros}">Nosotros</a></li>
+                <li><a th:href="@{/servicios}">Servicios</a></li>
+                <li><a class="active" th:href="@{/catalogo}">Catalogo</a></li>
+                <li><a th:href="@{/login}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="catalog-content">
+            <article class="product-row">
+                <div class="product-image">
+                    <img th:src="@{/assets/images/catalogo/cuellera-metal.png}" alt="Cuellera de metal">
+                </div>
+                <div class="product-info">
+                    <h2>CUELLERA DE METAL</h2>
+                    <div class="title-line"></div>
+                    <ul>
+                        <li>CAPACIDAD: 300 Y 500 kilos</li>
+                        <li>PLATAFORMA: ACERO</li>
+                        <li>ESPECIAL: GRANDES SACOS</li>
+                        <li>CABEZAL: FIJO</li>
+                    </ul>
+                    <a href="https://wa.me/51972147614?text=Hola%2C%20me%20interesa%20la%20Cuellera%20de%20Metal%20(300/500kg)"
+                       target="_blank"
+                       class="btn-whatsapp">
+                        Consultar por WhatsApp
+                    </a>
+                </div>
+            </article>
+
+            <article class="product-row reverse">
+                <div class="product-info">
+                    <h2>MODELO TORTUGA</h2>
+                    <div class="title-line"></div>
+                    <ul>
+                        <li>CAPACIDAD: 60 kilos</li>
+                        <li>PLATAFORMA: 30X32CM</li>
+                        <li>ESPECIAL: FÁCIL DE TRASLADAR</li>
+                        <li>CABEZAL: FIJO</li>
+                    </ul>
+                    <a href="https://wa.me/51972147614?text=Hola%2C%20me%20interesa%20el%20Modelo%20de%20Tortuga%20(60kg)"
+                       target="_blank"
+                       class="btn-whatsapp">
+                        Consultar por WhatsApp
+                    </a>
+                </div>
+                <div class="product-image">
+                    <img th:src="@{/assets/images/catalogo/modelo-tortuga.png}" alt="Modelo Tortuga">
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 THAILU Balanzas Industriales. Todos los derechos reservados.</p>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+.about{
+    display:grid;
+    grid-template-columns:35% 65%;
+    min-height:320px;
+    background: #c5cfdd;
+}
+
+.about-title{
+    display:flex;
+    align-items:center;
+    padding-left:40px;
+    background: #c5cfdd;
+}
+
+.about-title h1{
+    color:#3b4773;
+    font-size:3rem;
+}
+
+.about-card{
+    padding:40px;
+    background:#3b4773;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-card p {
+    color: white;
+    line-height: 1.6;
+}
+
+.advantages h2{
+    background:#274d77;
+    color:white;
+    padding:20px;
+    font-size:2rem;
+}
+
+.advantages-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    background:white;
+    padding: 30px 20px;
+    gap: 20px;
+}
+
+.advantage{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+}
+
+.advantage img{
+    width:50px;
+    height:50px;
+    padding: 10px;
+    background: #e8e8e8;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.advantage p{
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #222;
+    margin: 0;
+}
+
+.mission-vision{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+}
+
+.mission{
+    background:#6c717a;
+    padding:25px;
+}
+
+.vision{
+    background:#a7a7a7;
+    padding:25px;
+}
+
+.mission h2,
+.vision h2{
+    color:white;
+    margin-bottom:15px;
+}
+
+.mission p,
+.vision p {
+    color: white;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .advantages-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .advantage {
+        justify-content: center;
+    }
+}

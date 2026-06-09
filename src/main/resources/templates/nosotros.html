@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/nosotros.css}">
+    <title>Nosotros | THAILU</title>
+</head>
+<body>
+<div class="page-container">
+    <header class="header">
+        <div class="logo">
+            <img th:src="@{/assets/images/logo/logo.png}" alt="THAILU Balanzas Industriales">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a class="active" th:href="@{/nosotros}">Nosotros</a></li>
+                <li><a th:href="@{/servicios}">Servicios</a></li>
+                <li><a th:href="@{/catalogo}">Catalogo</a></li>
+                <li><a th:href="@{/login}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="about">
+            <div class="about-title">
+                <h1>Acerca de nosotros</h1>
+            </div>
+            <div class="about-card">
+                <p>Balanzas Electrónicas Thailu es una microempresa ubicada en la región Junín, especializada en la venta, reparación, mantenimiento y calibración de balanzas electrónicas para comercios, mercados, industrias y negocios locales. Nuestro compromiso es brindar un servicio técnico confiable, rápido y transparente que permita a nuestros clientes mantener la continuidad de sus operaciones y garantizar la precisión de sus equipos de pesaje.</p>
+                <br>
+                <p>Con años de experiencia en el sector, trabajamos constantemente para incorporar herramientas tecnológicas que mejoren la atención al cliente, optimicen nuestros procesos y generen mayor confianza en cada servicio realizado.</p>
+            </div>
+        </section>
+
+        <section class="advantages">
+            <h2>Somos tu mejor opción</h2>
+            <div class="advantages-grid">
+                <div class="advantage">
+                    <img th:src="@{/assets/icons/tiempo.png}" alt="Seguimiento en tiempo real">
+                    <p>Seguimiento en Tiempo Real</p>
+                </div>
+                <div class="advantage">
+                    <img th:src="@{/assets/icons/rapido.png}" alt="Atención rápida">
+                    <p>Atención Rápida y Organizada</p>
+                </div>
+                <div class="advantage">
+                    <img th:src="@{/assets/icons/chat.png}" alt="Atención personalizada">
+                    <p>Atención Personalizada</p>
+                </div>
+                <div class="advantage">
+                    <img th:src="@{/assets/icons/tecnico.png}" alt="Técnicos especializados">
+                    <p>Técnicos Especializados</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mission-vision">
+            <div class="mission">
+                <h2>Misión</h2>
+                <p>"Somos una microempresa de la región Junín dedicada a brindar soluciones integrales en pesaje electrónico venta, reparación y mantenimiento que asegura la equidad en el comercio local. Integramos prácticas de innovación técnica con un enfoque de conciencia ambiental, apoyando a nuestros clientes en la adopción de una cultura que valore y proteja la biodiversidad del Perú".</p>
+            </div>
+            <div class="vision">
+                <h2>Visión</h2>
+                <p>"Para el año 2030, ser el referente regional en sistemas de pesaje industrial reconocido por liderar la transición hacia un modelo de negocio regenerativo. Aspiramos a ser una organización que no solo venda tecnología, sino que sea un motor de educación ambiental y rescate de saberes ancestrales, contribuyendo a un Perú donde la economía local y la naturaleza prosperen en armonía".</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 THAILU Balanzas Industriales. Todos los derechos reservados.</p>
+    </footer>
+</div>
+</body>
+</html>
