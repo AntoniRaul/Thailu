@@ -1,106 +1,138 @@
 .hero{
-    min-height:85vh;
-    background:linear-gradient(
-        180deg,
-        #c5cfdd 0%,
-        #bcc6d5 50%,
-        #27375f 100%
-    );
+  min-height:85vh;
+  background:linear-gradient(
+    180deg,
+    #c5cfdd 0%,
+    #bcc6d5 50%,
+    #27375f 100%
+  );
 }
 
 .hero-content{
-    display:flex;
-    justify-content:space-between;
-    padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  padding:20px 40px;
 }
 
 .hero-text{
-    width:45%;
-    padding-top:120px;
+  width:45%;
+  padding-top:120px;
 }
 
 .hero-text h1{
-    color:white;
-    font-size:70px;
-    line-height:1.1;
+  color:white;
+  font-size:70px;
+  line-height:1.1;
 }
 
 .hero-text p{
-    margin-top:40px;
-    max-width:550px;
-    font-size:22px;
-    line-height:1.5;
+  margin-top:40px;
+  max-width:550px;
+  font-size:22px;
+  line-height:1.5;
 }
 
 .hero-buttons{
-    margin-top:180px;
+  margin-top:180px;
 }
 
 .hero-buttons span{
-    display:block;
-    margin-bottom:20px;
-    color:white;
-    font-weight:bold;
+  display:block;
+  margin-bottom:20px;
+  color:white;
+  font-weight:bold;
 }
 
 .btn-group{
-    display:flex;
-    gap:10px;
-    align-items: center;
+  display:flex;
+  gap:10px;
+  align-items: center;
 }
 
 .btn-main{
-    background:var(--secondary);
-    padding:15px 25px;
-    border-radius:30px;
-    color:black;
-    font-weight:bold;
-    display:inline-block;
+  background:var(--secondary);
+  padding:15px 25px;
+  border-radius:30px;
+  color:black;
+  font-weight:bold;
+  display:inline-block;
 }
 
 .btn-arrow{
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    background:var(--secondary);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:black;
-    font-size: 1.2rem;
-    font-weight: bold;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:var(--secondary);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:black;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .hero-images{
-    width:55%;
-    position:relative;
-    min-height: 500px;
+  width:75%;
+  position:relative;
+  min-height: 500px;
 }
 
+/* ============================================================
+   TAMAÑO DE BALANZAS EN COMPUTADORA
+   ============================================================ */
 .balanza-1{
-    position:absolute;
-    width:420px;
-    bottom:0;
-    left:40px;
+  position:absolute;
+  width: 530px;    /* ← Antes 420px, ahora más grande */
+  bottom:0;
+  left:40px;
 }
 
 .balanza-2{
-    position:absolute;
-    width:330px;
-    bottom:0;
-    right:30px;
+  position:absolute;
+  width: 480px;    /* ← Antes 330px, ahora más grande */
+  bottom:0;
+  right:30px;
 }
 
+/* ============================================================
+   TAMAÑO DE BALANZAS EN MÓVIL
+   ============================================================ */
 @media (max-width: 768px) {
-    .hero-text h1 {
-        font-size: 40px;
-    }
-    
-    .hero-text p {
-        font-size: 18px;
-    }
-    
-    .hero-buttons {
-        margin-top: 60px;
-    }
+  .hero-content {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .hero-text, .hero-images {
+    width: 100%;
+    padding-top: 40px;
+  }
+
+  .hero-images {
+    min-height: 300px;
+    margin-top: 40px;
+  }
+
+  .hero-text h1 {
+    font-size: 40px;
+  }
+
+  .hero-text p {
+    font-size: 18px;
+  }
+
+  .hero-buttons {
+    margin-top: 60px;
+  }
+
+  /* Balanzas más pequeñas en móvil */
+  .balanza-1 {
+    width: 220px;    /* ← Mucho más pequeño en celular */
+    left: 5%;
+  }
+
+  .balanza-2 {
+    width: 180px;    /* ← Mucho más pequeño en celular */
+    right: 5%;
+  }
 }
