@@ -1,107 +1,152 @@
 .about{
-    display:grid;
-    grid-template-columns:35% 65%;
-    min-height:320px;
-    background: #c5cfdd;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  min-height: 320px;
+  background: #c5cfdd;
 }
 
 .about-title{
-    display:flex;
-    align-items:center;
-    padding-left:40px;
-    background: #c5cfdd;
+  display: flex;
+  align-items: center;
+  padding-left: 40px;
+  background: #c5cfdd;
 }
 
 .about-title h1{
-    color:#3b4773;
-    font-size:3rem;
+  color: #3b4773;
+  font-size: 3rem;
 }
 
 .about-card{
-    padding:40px;
-    background:#3b4773;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  padding: 40px;
+  background: #3b4773;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .about-card p {
-    color: white;
-    line-height: 1.6;
+  color: white;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.about-card p:last-child {
+  margin-bottom: 0;
 }
 
 .advantages h2{
-    background:#274d77;
-    color:white;
-    padding:20px;
-    font-size:2rem;
+  background: #274d77;
+  color: white;
+  padding: 20px;
+  font-size: 2rem;
 }
 
 .advantages-grid{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    background:white;
-    padding: 30px 20px;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: white;
+  padding: 40px 30px;
+  gap: 24px;
 }
 
+/* ============================================================
+   TAMAÑO DE ICONOS PARA COMPUTADORA (DESKTOP)
+   ============================================================ */
 .advantage{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;          /* Espacio entre icono y texto */
+  padding: 20px;
 }
 
 .advantage img{
-    width:50px;
-    height:50px;
-    padding: 10px;
-    background: #e8e8e8;
-    border-radius: 12px;
-    flex-shrink: 0;
+  width: 180px;       /* ← Tamaño grande en PC */
+  height: 180px;      /* ← Tamaño grande en PC */
+  padding: 10px;      /* Fondo gris alrededor */
+  background: #e8e8e8;
+  border-radius: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
 .advantage p{
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: #222;
-    margin: 0;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #222;
+  margin: 0;
 }
 
 .mission-vision{
-    display:grid;
-    grid-template-columns:1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .mission{
-    background:#6c717a;
-    padding:25px;
+  background: #6c717a;
+  padding: 25px;
 }
 
 .vision{
-    background:#a7a7a7;
-    padding:25px;
+  background: #a7a7a7;
+  padding: 25px;
 }
 
 .mission h2,
 .vision h2{
-    color:white;
-    margin-bottom:15px;
+  color: white;
+  margin-bottom: 15px;
 }
 
 .mission p,
 .vision p {
-    color: white;
-    line-height: 1.6;
-    font-size: 0.95rem;
+  color: white;
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
 
+/* ============================================================
+   TAMAÑO DE ICONOS PARA MÓVIL
+   ============================================================ */
 @media (max-width: 768px) {
-    .advantages-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .advantage {
-        justify-content: center;
-    }
+  .about {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-title {
+    padding: 30px;
+    justify-content: center;
+  }
+  
+  .about-title h1 {
+    font-size: 2rem;
+  }
+
+  .advantages-grid {
+    grid-template-columns: 1fr;
+    padding: 24px 16px;
+    gap: 16px;
+  }
+
+  .advantage {
+    justify-content: flex-start;
+    gap: 16px;        /* Menos espacio en móvil */
+    padding: 16px;
+  }
+  
+  /* AQUÍ CAMBIAS EL TAMAÑO SOLO PARA MÓVIL */
+  .advantage img {
+    width: 120px;      /* ← Más pequeño en celular */
+    height: 120px;     /* ← Más pequeño en celular */
+    padding: 12px;    /* Menos padding */
+    border-radius: 14px;
+  }
+  
+  .advantage p {
+    font-size: 0.9rem;
+  }
+  
+  .mission-vision {
+    grid-template-columns: 1fr;
+  }
 }
