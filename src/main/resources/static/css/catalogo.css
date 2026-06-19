@@ -1,6 +1,24 @@
-.catalog-content{
-    min-height:620px;
-    padding:20px 60px 50px;
+/* ============================================================
+   CATÁLOGO CSS - THAILU
+   Basado en diseño original + botón WhatsApp
+   ============================================================ */
+
+.catalogo-hero {
+    background: #3d6287;
+    padding: 25px 0;
+    text-align: center;
+}
+
+.catalogo-hero h1 {
+    color: white;
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.catalogo-content {
+    min-height: 620px;
+    padding: 20px 60px 50px;
     background:
         linear-gradient(
             to bottom,
@@ -9,87 +27,157 @@
             rgba(39,55,95,.92) 100%
         ),
         url("../assets/images/catalogo/floor.png");
-    background-size:cover;
-    background-position:center;
+    background-size: cover;
+    background-position: center;
 }
 
-.product-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:40px;
+/* Producto individual - fila alternada */
+.product-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
     gap: 40px;
 }
 
-.reverse{
-    flex-direction:row-reverse;
+.product-row.reverse {
+    flex-direction: row-reverse;
 }
 
-.product-image{
-    width:360px;
-    height:260px;
-    background:rgba(255,255,255,.15);
-    display:flex;
-    justify-content:center;
-    align-items:center;
+/* Contenedor de imagen */
+.product-image {
+    width: 360px;
+    height: 260px;
+    background: rgba(255,255,255,.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-shrink: 0;
 }
 
-.product-image img{
-    max-width:85%;
-    max-height:85%;
+.product-image img {
+    max-width: 85%;
+    max-height: 85%;
 }
 
-.product-info{
-    width:45%;
+/* Información del producto */
+.product-info {
+    width: 45%;
 }
 
-.product-info h2{
-    color:white;
-    font-size:3rem;
-    font-weight:800;
-    margin-bottom:15px;
+.product-info h2 {
+    color: white;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
 }
 
-.title-line{
-    width:100%;
-    height:2px;
-    background:white;
-    position:relative;
-    margin-bottom:20px;
+/* Línea decorativa bajo el título */
+.title-line {
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: relative;
+    margin-bottom: 20px;
 }
 
-.title-line::before{
-    content:"";
-    position:absolute;
-    left:0;
-    top:0;
-    width:120px;
-    height:2px;
-    background:#d9a31a;
+.title-line::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 120px;
+    height: 2px;
+    background: #d9a31a;
 }
 
-.product-info ul{
-    padding-left:20px;
+/* Lista de características */
+.product-info ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
 }
 
-.product-info li{
-    color:white;
-    font-size:1.1rem;
-    line-height:1.8;
+.product-info li {
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.8;
 }
 
-.product-info li::marker{
-    color:#d9a31a;
+.product-info li::marker {
+    color: #d9a31a;
 }
 
+/* Mensaje cuando no hay productos */
+.catalogo-vacio {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #333;
+    font-size: 1.3rem;
+}
+
+/* ============================================================
+   BOTÓN WHATSAPP
+   ============================================================ */
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #25D366;
+    color: white;
+    padding: 0.8rem 1.4rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-whatsapp:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp svg {
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (max-width: 768px) {
-    .product-info h2 {
-        font-size: 2rem;
+    .catalogo-hero h1 {
+        font-size: 2.5rem;
     }
-    
+
+    .product-row,
+    .product-row.reverse {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
     .product-image {
         width: 100%;
         max-width: 360px;
+        height: auto;
+        min-height: 200px;
+    }
+
+    .product-info {
+        width: 100%;
+    }
+
+    .product-info h2 {
+        font-size: 2rem;
+    }
+
+    .product-info ul {
+        text-align: left;
+    }
+
+    .catalogo-content {
+        padding: 20px 20px 50px;
     }
 }

@@ -37,16 +37,17 @@
                 <div class="line"></div>
             </div>
 
-            <div class="services-grid">
-                <article class="service-card">
-                    <img th:src="@{/assets/images/servicios/venta-balanzas.png}" alt="Venta de balanzas">
-                    <h3>Venta de balanzas</h3>
+            <!-- Si hay servicios -->
+            <div class="services-grid" th:if="${!#lists.isEmpty(servicios)}">
+                <article class="service-card" th:each="s : ${servicios}">
+                    <img th:src="${s.imagenUrl}" th:alt="${s.titulo}">
+                    <h3 th:text="${s.titulo}">Título</h3>
                 </article>
+            </div>
 
-                <article class="service-card">
-                    <img th:src="@{/assets/images/servicios/reparacion-balanzas.png}" alt="Reparación de balanzas">
-                    <h3>Reparación de balanzas</h3>
-                </article>
+            <!-- Si NO hay servicios -->
+            <div class="services-vacio" th:if="${#lists.isEmpty(servicios)}">
+                <p>Servicios en actualización...</p>
             </div>
         </section>
     </main>

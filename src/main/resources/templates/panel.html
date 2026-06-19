@@ -24,6 +24,25 @@
 
     <main class="panel-main">
 
+        <!-- Navegación del Panel Admin -->
+        <section class="admin-nav">
+            <h2>Panel de Administración</h2>
+            <div class="admin-cards">
+                <a href="/panel" class="admin-card active">
+                    <h3>📋 Órdenes / Balanzas</h3>
+                    <p>Gestionar órdenes de reparación</p>
+                </a>
+                <a href="/panel/catalogo" class="admin-card">
+                    <h3>🛒 Catálogo</h3>
+                    <p th:text="'Productos: ' + ${totalProductos}">Productos</p>
+                </a>
+                <a href="/panel/servicios" class="admin-card">
+                    <h3>🔧 Servicios</h3>
+                    <p th:text="'Servicios: ' + ${totalServicios}">Servicios</p>
+                </a>
+            </div>
+        </section>
+
         <!-- FORMULARIO NUEVA ORDEN -->
         <section class="panel-section">
             <h2 class="panel-title">Registrar nueva balanza</h2>

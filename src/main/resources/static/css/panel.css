@@ -182,3 +182,223 @@
     .panel-main { padding: 20px 15px; }
     .orden-form .form-row { flex-direction: column; }
 }
+
+/* Navegación Admin */
+.admin-nav {
+    margin-bottom: 2rem;
+}
+.admin-nav h2 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+.admin-cards {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.admin-card {
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    min-width: 200px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s;
+}
+.admin-card:hover {
+    border-color: #27ae60;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.admin-card.active {
+    border-color: #27ae60;
+    background: #e8f5e9;
+}
+.admin-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+.admin-card p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Tablas Admin */
+.admin-section {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.btn-primary {
+    background: #27ae60;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+.btn-primary:hover {
+    background: #219150;
+}
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.admin-table th,
+.admin-table td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+.admin-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #555;
+}
+.btn-edit {
+    background: #3498db;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+}
+.btn-delete {
+    background: #e74c3c;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+/* Formularios */
+.form-section {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.admin-form .form-group {
+    margin-bottom: 1.2rem;
+}
+.admin-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    color: #444;
+}
+.admin-form input,
+.admin-form textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+.admin-form input:focus,
+.admin-form textarea:focus {
+    outline: none;
+    border-color: #27ae60;
+}
+
+/* ============================================================
+   ESTILOS ADICIONALES PARA CRUDs DE CATÁLOGO Y SERVICIOS
+   ============================================================ */
+
+/* Header del panel admin */
+.panel-header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.panel-header-right .panel-title {
+    color: white;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* Navegación admin - integrada con el diseño existente */
+.admin-nav {
+    margin-bottom: 1rem;
+}
+
+.admin-nav h2 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-size: 1.3rem;
+}
+
+.admin-cards {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.admin-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    min-width: 180px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s;
+    flex: 1;
+}
+
+.admin-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-color: var(--primary);
+}
+
+.admin-card.active {
+    border-color: #27ae60;
+    background: rgba(232, 245, 233, 0.95);
+}
+
+.admin-card h3 {
+    margin: 0 0 0.4rem 0;
+    font-size: 1rem;
+    color: #2c3e50;
+}
+
+.admin-card p {
+    margin: 0;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* Section header para CRUDs */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Botón editar (azul) */
+.btn-entregar.btn-edit {
+    background: #3498db;
+}
+
+.btn-entregar.btn-edit:hover {
+    background: #2980b9;
+}

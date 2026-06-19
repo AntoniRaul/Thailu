@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${modo} == 'crear' ? 'Nuevo Servicio' : 'Editar Servicio'">Servicio</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/panel.css}">
+</head>
+<body>
+<div class="page-container">
+    <header class="header">
+        <div class="logo">
+            <img th:src="@{/assets/images/logo/logo.png}" alt="THAILU">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a th:href="@{/panel/servicios}">← Volver a Servicios</a></li>
+                <li><a th:href="@{/logout}">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2 th:text="${modo} == 'crear' ? 'Nuevo Servicio' : 'Editar Servicio'">Formulario</h2>
+
+            <form th:action="${modo} == 'crear' ? @{/panel/servicios/guardar} : @{/panel/servicios/actualizar/{id}(id=${servicio.id})}"
+                  method="post" enctype="multipart/form-data" class="admin-form">
+
+                <div class="form-group">
+                    <label>Título del servicio</label>
+                    <input type="text" name="titulo" th:value="${servicio.titulo}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <textarea name="descripcion" rows="5" th:text="${servicio.descripcion}" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Imagen del servicio</label>
+                    <input type="file" name="imagenFile" accept="image/*" th:required="${modo} == 'crear'">
+                    <div th:if="${servicio.imagenUrl}">
+                        <p>Imagen actual:</p>
+                        <img th:src="${servicio.imagenUrl}" style="width:120px;border-radius:8px;margin-top:8px;">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" th:text="${modo} == 'crear' ? 'Guardar Servicio' : 'Actualizar Servicio'">Guardar</button>
+            </form>
+        </section>
+    </main>
+</div>
+</body>
+</html>

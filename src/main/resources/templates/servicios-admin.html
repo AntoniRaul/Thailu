@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/panel.css}">
+    <title>Admin Servicios | THAILU</title>
+</head>
+<body>
+<div class="page-container">
+    <header class="header">
+        <div class="logo">
+            <img th:src="@{/assets/images/logo/logo.png}" alt="THAILU Balanzas Industriales">
+        </div>
+        <div class="panel-header-right">
+            <span class="panel-title">Panel de Administración</span>
+            <a th:href="@{/logout}" class="btn-logout">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <main class="panel-main">
+        <!-- Navegación del Panel Admin -->
+        <section class="admin-nav">
+            <h2>Panel de Administración</h2>
+            <div class="admin-cards">
+                <a href="/panel" class="admin-card">
+                    <h3>📋 Órdenes / Balanzas</h3>
+                    <p>Gestionar órdenes de reparación</p>
+                </a>
+                <a href="/panel/catalogo" class="admin-card">
+                    <h3>🛒 Catálogo</h3>
+                    <p th:text="'Productos: ' + ${totalProductos}">Productos</p>
+                </a>
+                <a href="/panel/servicios" class="admin-card active">
+                    <h3>🔧 Servicios</h3>
+                    <p th:text="'Servicios: ' + ${totalServicios}">Servicios</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Sección de Gestión de Servicios -->
+        <section class="panel-section">
+            <div class="section-header">
+                <h2 class="panel-title">🔧 Gestión de Servicios</h2>
+                <a th:href="@{/panel/servicios/nuevo}" class="btn-registrar">+ Nuevo Servicio</a>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="ordenes-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Imagen</th>
+                        <th>Título</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="s : ${servicios}">
+                        <td th:text="${s.id}">1</td>
+                        <td>
+                            <img th:if="${s.imagenUrl}" th:src="${s.imagenUrl}" alt="Servicio" style="width:50px;height:50px;object-fit:cover;border-radius:8px;">
+                            <span th:unless="${s.imagenUrl}">Sin imagen</span>
+                        </td>
+                        <td th:text="${s.titulo}">Título</td>
+                        <td th:text="${#strings.abbreviate(s.descripcion, 80)}">Desc...</td>
+                        <td>
+                            <div class="action-buttons" style="display:flex;gap:0.5rem;">
+                                <a th:href="@{/panel/servicios/editar/{id}(id=${s.id})}" class="btn-entregar" style="background:#3498db;">Editar</a>
+                                <form th:action="@{/panel/servicios/eliminar}" method="post" style="display:inline;">
+                                    <input type="hidden" name="id" th:value="${s.id}">
+                                    <button type="submit" class="btn-entregar" onclick="return confirm('¿Eliminar este servicio?')">Eliminar</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(servicios)}">
+                        <td colspan="5" style="text-align:center;padding:2rem;">No hay servicios registrados</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 THAILU Balanzas Industriales. Todos los derechos reservados.</p>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,3 +1,11 @@
+/* ============================================================
+   SEGUIMIENTO CSS - THAILU
+   ============================================================ */
+
+/* ============================================================
+   HEADER SIMPLE - Logo corregido
+   ============================================================ */
+
 .header-simple {
     display: flex;
     justify-content: space-between;
@@ -5,6 +13,19 @@
     padding: 15px 40px;
 }
 
+/* Contenedor del logo con ANCHO FIJO */
+.header-simple .logo {
+    width: 15px;           /* Ancho fijo, ajusta a tu gusto */
+    flex-shrink: 0;         /* Evita que se encoja */
+}
+
+.header-simple .logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Botón regresar */
 .btn-regresar {
     background: var(--dark);
     color: var(--secondary);
@@ -12,12 +33,15 @@
     border-radius: 20px;
     font-weight: 600;
     transition: .3s;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn-regresar:hover {
     background: #4a4e55;
 }
 
+/* Página de estado */
 .status-page {
     display: flex;
     justify-content: center;
@@ -60,6 +84,7 @@
     color: var(--secondary);
 }
 
+/* Pasos de estado */
 .status-steps {
     display: flex;
     justify-content: space-between;
@@ -125,7 +150,16 @@
     width: 100%;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
+    .header-simple {
+        padding: 15px 20px;
+    }
+
+    .header-simple .logo {
+        max-width: 120px;
+    }
+
     .status-steps {
         flex-direction: column;
         gap: 30px;

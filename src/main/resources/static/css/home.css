@@ -43,32 +43,21 @@
     font-weight:bold;
 }
 
-.btn-group{
-    display:flex;
-    gap:10px;
-    align-items: center;
-}
-
-.btn-main{
+/* Solo el botón principal, sin flecha */
+.hero-buttons .btn-main{
+    display:inline-block;
     background:var(--secondary);
-    padding:15px 25px;
+    padding:15px 30px;
     border-radius:30px;
     color:black;
     font-weight:bold;
-    display:inline-block;
+    text-decoration:none;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.btn-arrow{
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    background:var(--secondary);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:black;
-    font-size: 1.2rem;
-    font-weight: bold;
+.hero-buttons .btn-main:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
 .hero-images{

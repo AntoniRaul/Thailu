@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${modo == 'crear'} ? 'Nuevo Producto' : 'Editar Producto'">Producto</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/panel.css}">
+</head>
+<body>
+<div class="page-container">
+    <header class="header">
+        <div class="logo">
+            <img th:src="@{/assets/images/logo/logo.png}" alt="THAILU">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a th:href="@{/panel/catalogo}">← Volver al Catálogo</a></li>
+                <li><a th:href="@{/logout}">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2 th:text="${modo == 'crear'} ? 'Nuevo Producto' : 'Editar Producto'">Formulario</h2>
+
+            <!-- FORMULARIO CREAR -->
+            <form th:if="${modo == 'crear'}"
+                  th:action="@{/panel/catalogo/guardar}"
+                  method="post"
+                  enctype="multipart/form-data"
+                  class="admin-form">
+
+                <div class="form-group">
+                    <label>Nombre del producto</label>
+                    <input type="text" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Categoría</label>
+                    <input type="text" name="categoria" placeholder="Ej: Balanzas industriales">
+                </div>
+
+                <div class="form-group">
+                    <label>Precio (S/)</label>
+                    <input type="number" step="0.01" name="precio" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <textarea name="descripcion" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Imagen del producto *</label>
+                    <input type="file" name="imagenFile" accept="image/*" required>
+                </div>
+
+                <button type="submit" class="btn-primary">Guardar Producto</button>
+            </form>
+
+            <!-- FORMULARIO EDITAR -->
+            <form th:if="${modo == 'editar'}"
+                  th:action="@{/panel/catalogo/actualizar/{id}(id=${producto.id})}"
+                  method="post"
+                  enctype="multipart/form-data"
+                  class="admin-form">
+
+                <div class="form-group">
+                    <label>Nombre del producto</label>
+                    <input type="text" name="nombre" th:value="${producto.nombre}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Categoría</label>
+                    <input type="text" name="categoria" th:value="${producto.categoria}" placeholder="Ej: Balanzas industriales">
+                </div>
+
+                <div class="form-group">
+                    <label>Precio (S/)</label>
+                    <input type="number" step="0.01" name="precio" th:value="${producto.precio}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <textarea name="descripcion" rows="4" th:text="${producto.descripcion}"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Imagen del producto</label>
+                    <input type="file" name="imagenFile" accept="image/*">
+                    <div th:if="${producto.imagenUrl}">
+                        <p>Imagen actual:</p>
+                        <img th:src="${producto.imagenUrl}" style="width:120px;border-radius:8px;margin-top:8px;">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary">Actualizar Producto</button>
+            </form>
+        </section>
+    </main>
+</div>
+</body>
+</html>

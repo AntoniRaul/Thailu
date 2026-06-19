@@ -3,6 +3,8 @@ package com.thailu.thailubackend.controller;
 import com.thailu.thailubackend.model.EstadoOrden;
 import com.thailu.thailubackend.model.Orden;
 import com.thailu.thailubackend.repository.OrdenRepository;
+import com.thailu.thailubackend.repository.ProductoRepository;
+import com.thailu.thailubackend.repository.ServicioRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,12 +21,16 @@ public class PanelController {
     @Autowired
     private OrdenRepository ordenRepository;
 
-    // Verificar sesión
+    @Autowired
+    private ProductoRepository productoRepository;
+
+    @Autowired
+    private ServicioRepository servicioRepository;
+
     private boolean noAutenticado(HttpSession session) {
         return session.getAttribute("usuarioLogueado") == null;
     }
 
-    // Generar código automático: THL-001, THL-002...
     private String generarCodigo() {
         long total = ordenRepository.count();
         return String.format("THL-%03d", total + 1);
@@ -37,6 +43,8 @@ public class PanelController {
         List<Orden> ordenes = ordenRepository.findAll();
         model.addAttribute("ordenes", ordenes);
         model.addAttribute("estados", EstadoOrden.values());
+        model.addAttribute("totalProductos", productoRepository.count());
+        model.addAttribute("totalServicios", servicioRepository.count());
         return "panel";
     }
 
